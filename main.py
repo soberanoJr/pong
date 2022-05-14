@@ -3,12 +3,14 @@ from turtle import Screen
 
 from ball import Ball
 from paddle import Paddle
+from score import Score
 
 
 screen = Screen()
 player_1 = Paddle((-350, 0))
 player_2 = Paddle((350, 0))
 ball = Ball()
+score = Score()
 
 screen.title("PONG")
 screen.bgcolor("black")
@@ -39,8 +41,13 @@ while play:
             and ball.xcor() > 320:
         ball.bounce_x()
 
-    # Game over
-    if ball.xcor() > 380 or ball.xcor() < -380:
+    # Point
+    if ball.xcor() > 380:
         ball.reset()
+        score.point("player_1")
+
+    if ball.xcor() < -380:
+        ball.reset()
+        score.point("player_2")
 
 screen.exitonclick()
