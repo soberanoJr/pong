@@ -26,7 +26,7 @@ play = True
 
 while play:
 
-    time.sleep(0.1)
+    time.sleep(ball.move_speed)
     screen.update()
     ball.move()
 
